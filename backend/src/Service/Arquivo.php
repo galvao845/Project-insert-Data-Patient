@@ -124,7 +124,7 @@ class Arquivo {
                     $vaccineDataNew = $this->entityManager->fetchAll($sqlGetVaccineData, $params);
                     $vaccineDataNew = $vaccineDataNew[0];
                     
-                    if ($insertVaccination && $vaccineDataNew['MANUFACTURER'] == $vaccineData['MANUFACTURER']) {
+                    if ($insertVaccination && $vaccineDataNew['MANUFACTURER'] != $vaccineData['MANUFACTURER']) {
                         $insertVaccination = false;
                         $msg = 'Não é possível vacinar um paciente com doses de fabricantes diferentes.';
                     }
