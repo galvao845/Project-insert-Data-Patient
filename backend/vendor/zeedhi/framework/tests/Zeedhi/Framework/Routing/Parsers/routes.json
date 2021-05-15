@@ -1,0 +1,17 @@
+[{
+    "uri"       : "/blog",
+    "controller" : "blogController",
+    "controllerMethod"     : "lastTenPosts",
+    "methods"    : [ "POST", "GET" ]
+},{
+    "uri"       : "/blog/author/{authorId}",
+    "params"    : [
+        {
+            "name"  : "authorId",
+            "regex" : "[0-9]+"
+        }
+    ],
+    "controller" : "blogController",
+    "controllerMethod"     : "findAuthor",
+    "methods"    : [ "POST", "GET" ]
+}]

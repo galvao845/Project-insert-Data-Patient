@@ -1,0 +1,35 @@
+{
+    "connectionId": 1,
+    "mappingType": "xml",
+    "mappingPath": "dcm",
+    "srcPath": "src",
+    "workConnection": {
+        "driver": "oci8",
+        "host": "192.168.122.5",
+        "port": "1521",
+        "username": "PRODUTOS_REFERENCIA",
+        "password": "yii1Wdy8hs1/gChtMnKPPuq6gyUTX4WPzsP2/LGGl0Q=",
+        "dbname": "PDBORCL",
+		"service":true
+    },
+    "metaConnection": {
+        "driver": "oci8",
+        "host": "192.168.122.6",
+        "port": "1521",
+        "username": "ZEEDHI",
+        "password": "F60oiadefIESOskvGANW39GhTJyVeHyBSkzfI1OzNbc=",
+        "dbname": "pdborcl",
+        "service": true
+    },
+    "namespace": "Model",
+    "inflectorClassName": "\\Zeedhi\\Model\\Util\\Inflector",
+    "subModelsByTables": {
+        "VND_ENCERRANTEBICOTURNO":"Sales",
+        "VND_RELACIONAMENTOTURNO":"Sales",
+        "VND_BICO":"Sales",
+        "VND_TURNO":"Sales",
+        "VND_TURNOOPERACAO":"Sales",
+        "MOVCAIXA":"Sales", 
+        "TURCAIXA":"Sales"
+    }
+}

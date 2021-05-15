@@ -1,0 +1,20 @@
+{
+    "message": {
+        "tableName": "message",
+        "columns": [
+            "_id",
+            "author",
+            "message"
+        ],
+        "typesMapping": {
+            "_id": "mongoId"
+        },
+        "primaryKeys": [
+            "_id"
+        ],
+        "sequentialColumn": "_id",
+        "customColumns": [
+            "date"
+        ]
+    }
+}

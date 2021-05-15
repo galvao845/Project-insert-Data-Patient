@@ -1,0 +1,14 @@
+{
+  "simple_regions": {
+    "tableName": "REGIONS",
+    "columns": {
+      "ID": "REGION_ID",
+      "NAME": "REGION_NAME"
+    },
+    "primaryKeys": [
+      "REGION_ID"
+    ],
+    "sequentialColumn": "REGION_ID",
+    "relations": []
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "sysdate": {
+    "columns": [
+      "SYSDATE"
+    ],
+    "query": "SELECT SYSDATE FROM DUAL"
+  }
+}

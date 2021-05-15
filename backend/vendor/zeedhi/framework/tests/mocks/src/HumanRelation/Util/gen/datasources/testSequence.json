@@ -1,0 +1,14 @@
+{
+    "testSequence": {
+        "tableName": "TEST_SEQUENCE",
+        "columns": [
+            "ID",
+            "TEXT"
+        ],
+        "primaryKeys": [
+            "ID"
+        ],
+        "sequentialColumn": "ID",
+        "relations": []
+    }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="HumanRelation\Repositories\Departments" name="HumanRelation\Entities\Departments" table="DEPARTMENTS">
+    <id name="departmentId" type="integer" column="DEPARTMENT_ID"/>
+    <field name="departmentName" type="string" column="DEPARTMENT_NAME"/>
+    <field name="managerId" type="integer" column="MANAGER_ID"/>
+    <many-to-one field="location" target-entity="HumanRelation\Entities\Locations">
+      <join-columns>
+        <join-column name="LOCATION_ID" referenced-column-name="LOCATION_ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

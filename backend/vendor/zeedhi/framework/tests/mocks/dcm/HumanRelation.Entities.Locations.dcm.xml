@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="HumanRelation\Repositories\Locations" name="HumanRelation\Entities\Locations" table="LOCATIONS">
+    <id name="locationId" type="integer" column="LOCATION_ID"/>
+    <field name="streetAddress" type="string" column="STREET_ADDRESS"/>
+    <field name="postalCode" type="string" column="POSTAL_CODE"/>
+    <field name="city" type="string" column="CITY"/>
+    <field name="stateProvince" type="string" column="STATE_PROVINCE"/>
+    <many-to-one field="country" target-entity="HumanRelation\Entities\Countries">
+      <join-columns>
+        <join-column name="COUNTRY_ID" referenced-column-name="COUNTRY_ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,24 @@
+{
+    "countries_group_by_regions": {
+        "tableName": "COUNTRIES",
+        "columns": [
+            "COUNTRY_ID",
+            "COUNTRY_NAME",
+            "REGION_ID"
+        ],
+        "primaryKeys": [
+            "COUNTRY_ID"
+        ],
+        "sequentialColumn": null,
+        "relations": [
+            {
+                "targetTable" : "REGIONS",
+                "targetSequentialColumn" : "REGION_ID",
+                "localSequentialColumn" : "REGION_ID",
+                "localColumns" : ["REGION_ID"],
+                "targetColumns" : ["REGION_ID"]
+            }
+        ],
+        "groupBy" : ["REGION_ID"]
+    }
+}

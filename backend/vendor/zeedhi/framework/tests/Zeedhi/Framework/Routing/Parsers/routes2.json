@@ -1,0 +1,6 @@
+[{
+  "uri"       : "/account",
+  "controller" : "accountController",
+  "controllerMethod"     : "find",
+  "methods"    : [ "POST", "GET" ]
+}]

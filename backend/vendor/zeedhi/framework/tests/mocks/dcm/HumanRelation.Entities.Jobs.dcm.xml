@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="HumanRelation\Repositories\Jobs" name="HumanRelation\Entities\Jobs" table="JOBS">
+    <id name="jobId" type="string" column="JOB_ID"/>
+    <field name="jobTitle" type="string" column="JOB_TITLE"/>
+    <field name="minSalary" type="integer" column="MIN_SALARY"/>
+    <field name="maxSalary" type="integer" column="MAX_SALARY"/>
+  </entity>
+</doctrine-mapping>

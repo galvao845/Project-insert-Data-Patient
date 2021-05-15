@@ -1,0 +1,25 @@
+{
+  "mappingType"    : "xml",
+  "mappingPath"    : "dcm",
+  "srcPath"        : "src",
+  "connection" : {
+    "driver"     : "oci8",
+    "host"       : "192.168.122.5",
+    "port"       : "1521",
+    "username"   : "USR_ORG_20",
+    "password"   : "F60oiadefIESOskvGANW39GhTJyVeHyBSkzfI1OzNbc=",
+    "dbname"     : "pdborcl"
+  },
+  "namespace"      : "",
+  "inflectorClassName" : "\\Zeedhi\\Framework\\Util\\DefaultInflector",
+  "subModelsByTables" : {
+    "COUNTRIES"    : "HUMAN_RELATION",
+    "DEPARTMENTS"  : "HUMAN_RELATION",
+    "EMPLOYEES"    : "HUMAN_RELATION",
+    "JOB_HISTORY"  : "HUMAN_RELATION",
+    "JOBS"         : "HUMAN_RELATION",
+    "LOCATIONS"    : "HUMAN_RELATION",
+    "REGIONS"      : "HUMAN_RELATION",
+    "TEST_SEQUENCE": "HUMAN_RELATION"
+  }
+}

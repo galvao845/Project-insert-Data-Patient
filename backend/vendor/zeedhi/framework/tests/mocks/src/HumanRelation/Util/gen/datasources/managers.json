@@ -1,0 +1,43 @@
+{
+    "managers": {
+        "tableName": "EMPLOYEES",
+        "columns": [
+            "EMPLOYEE_ID",
+            "FIRST_NAME",
+            "LAST_NAME",
+            "MANAGER_ID",
+            "JOB_ID",
+            "DEPARTMENT_ID"
+        ],
+        "primaryKeys": [
+            "EMPLOYEE_ID"
+        ],
+        "sequentialColumn": "EMPLOYEE_ID",
+        "relations": [
+            {
+                "targetTable" : "EMPLOYEES",
+                "targetSequentialColumn" : "EMPLOYEE_ID",
+                "localSequentialColumn" : "MANAGER_ID",
+                "localColumns" : ["MANAGER_ID"],
+                "targetColumns" : ["EMPLOYEE_ID"]
+            },
+            {
+                "targetTable" : "JOBS",
+                "targetSequentialColumn" : "JOB_ID",
+                "localSequentialColumn" : "JOB_ID",
+                "localColumns" : ["JOB_ID"],
+                "targetColumns" : ["JOB_ID"]
+            },
+            {
+                "targetTable" : "DEPARTMENTS",
+                "targetSequentialColumn" : "DEPARTMENT_ID",
+                "localSequentialColumn" : "DEPARTMENT_ID",
+                "localColumns" : ["DEPARTMENT_ID"],
+                "targetColumns" : ["DEPARTMENT_ID"]
+            }
+        ],
+        "conditions" : [
+            "MANAGER_ID IS NULL"
+        ]
+    }
+}

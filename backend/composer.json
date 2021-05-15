@@ -1,0 +1,32 @@
+{
+    "name": "proradis/project",
+    "description": "Projeto Proradis",
+    "license": "MIT",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://cdn.zeedhi.com/composer"
+        },
+        {
+            "packagist": false
+        }
+    ],
+    "require": {
+      "zeedhi/framework": "2.3.*",
+        "zeedhi/libraries": "dev-master",
+      "php": "~7.2"
+    },
+    "autoload": {
+	    "psr-0": {
+        "Controller": "src",
+        "Service": "src"
+	    }
+	},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "secure-http": false
+    }
+    
+}

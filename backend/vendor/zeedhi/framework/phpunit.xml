@@ -1,0 +1,28 @@
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/5.4/phpunit.xsd"
+    bootstrap="tests/bootstrap.php"
+    beStrictAboutTestsThatDoNotTestAnything="false"
+>
+
+    <testsuites>
+        <testsuite name="Framework">
+            <directory>tests/Zeedhi/Framework</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <log type="coverage-html" target="codeCoverageReport" charset="UTF-8" highlight="true"/>
+        <log type="coverage-clover" target="codeCoverageReport/phpunit.coverage.xml"/>
+        <log type="junit" target="codeCoverageReport/phpunit.result.xml" logIncompleteSkipped="false"/>
+    </logging>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+            <exclude>
+                <file>src/Zeedhi/Framework/Remote/cURLRequest.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

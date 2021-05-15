@@ -1,0 +1,25 @@
+{
+  "locations_by_region": {
+    "tableName": "LOCATIONS",
+    "columns": [
+      "LOCATION_ID",
+      "CITY",
+      "STATE_PROVINCE",
+      "COUNTRY_ID"
+    ],
+    "primaryKeys": [
+      "LOCATION_ID"
+    ],
+    "sequentialColumn": "LOCATION_ID",
+    "relations": [
+      {
+        "targetTable" : "COUNTRIES",
+        "targetSequentialColumn" : "COUNTRY_ID",
+        "localSequentialColumn" : "COUNTRY_ID",
+        "localColumns" : ["COUNTRY_ID"],
+        "targetColumns" : ["COUNTRY_ID"]
+      }
+    ],
+    "query" : "SELECT * FROM LOCATIONS WHERE COUNTRY_ID IN (SELECT COUNTRY_ID FROM COUNTRIES WHERE REGION_ID = :REGION_ID)"
+  }
+}

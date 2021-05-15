@@ -1,0 +1,18 @@
+{
+  "invalid_pk": {
+    "tableName": "invalid_pk",
+    "columns": [
+      "COLUMN_1",
+      "START_DATE",
+      "END_DATE",
+      "JOB_ID",
+      "DEPARTMENT_ID"
+    ],
+    "primaryKeys": [
+      "PK_COLUMN",
+      "EMPLOYEE_ID"
+    ],
+    "sequentialColumn": "bar",
+    "relations": []
+  }
+}

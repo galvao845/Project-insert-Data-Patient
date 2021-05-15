@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <!-- List class names -->
+        <parameter key="kernel.class">Zeedhi\Framework\HTTP\Kernel</parameter>
+        <parameter key="router.class">Zeedhi\Framework\Routing\Router</parameter>
+        <parameter key="application.class">Zeedhi\Framework\Application</parameter>
+        <parameter key="instanceManager.class">Zeedhi\Framework\DependencyInjection\InstanceManager</parameter>
+        <parameter key="entityManager.class">Doctrine\ORM\EntityManager</parameter>
+        <parameter key="entityMetaDataConfig.class">Doctrine\ORM\Tools\Setup</parameter>
+        <parameter key="eventManager.class">Doctrine\Common\EventManager</parameter>
+        <parameter key="sessionInit.class">Doctrine\DBAL\Event\Listeners\OracleSessionInit</parameter>
+        <parameter key="router.class">Zeedhi\Framework\Routing\Router</parameter>
+        <parameter key="routerParser.class">Zeedhi\Framework\Routing\Parsers\JSONFormat</parameter>
+        <parameter key="dataSourceManager.class">Zeedhi\Framework\DataSource\Manager\Doctrine\ManagerImpl</parameter>
+        <parameter key="session.class">Zeedhi\Framework\Session\Session</parameter>
+        <parameter key="exceptionHandler.class">Zeedhi\Framework\ExceptionHandler\ExceptionHandlerService</parameter>
+        <parameter key="crud.class">Zeedhi\Framework\Controller\Crud</parameter>
+        <parameter key="crypt.class">Zeedhi\Framework\Util\Crypt</parameter>
+        <parameter key="cors.class">Zeedhi\Framework\Security\Support\Cors</parameter>
+        <parameter key="corsOptions.class">Zeedhi\Framework\Security\Support\CorsOptions</parameter>
+        <parameter key="antiCSRF.class">Zeedhi\Framework\Security\AntiCSRF\AntiCSRF</parameter>
+        <parameter key="errorHandler.class">Zeedhi\Framework\ErrorHandler\ErrorToException</parameter>
+
+        <parameter key="serializer.class">Zeedhi\Framework\Serializer\Serializer</parameter>
+        <parameter key="serializerContext.class">JMS\Serializer\SerializationContext</parameter>
+        <parameter key="serializerBuilder.class">JMS\Serializer\SerializerBuilder</parameter>
+        <parameter key="serializerExclusionStrategy.class">Zeedhi\Framework\Serializer\Strategy\Exclusion</parameter>
+        <parameter key="serializerUpperCaseNamingStrategy.class">Zeedhi\Framework\Serializer\Strategy\UpperCaseNaming</parameter>
+
+        <!-- driverManager can be rewrite -->
+        <parameter key="driverManager.class">Zeedhi\Framework\DBAL\DriverManager</parameter>
+
+        <!-- events can be rewrite -->
+        <parameter key="preDispatchEvent.class">Zeedhi\Framework\Events\PreDispatch\Event</parameter>
+        <parameter key="postDispatchEvent.class">Zeedhi\Framework\Events\PostDispatch\Event</parameter>
+        <parameter key="onExceptionEvent.class">\Zeedhi\Framework\Events\OnException\Event</parameter>
+
+
+        <!-- nameProvider can be rewrite -->
+        <parameter key="nameProvider.class">Zeedhi\Framework\Util\NameProvider</parameter>
+
+        <!-- Simple parameter that must be rewrote -->
+        <parameter key="proxy_auto_generate_strategy" type="constant">Doctrine\Common\Proxy\AbstractProxyFactory::AUTOGENERATE_EVAL</parameter>
+        <parameter key="debug_db">false</parameter>
+        <parameter key="is_dev_mode">false</parameter>
+        <parameter key="dcm_path" type="collection">
+            <parameter>rewrite</parameter>
+        </parameter>
+        <parameter key="connection_params" type="collection">
+            <parameter key="driver">rewrite</parameter>
+            <parameter key="user">rewrite</parameter>
+            <parameter key="password">rewrite</parameter>
+            <parameter key="host">rewrite</parameter>
+            <parameter key="port">rewrite</parameter>
+            <parameter key="dbname">rewrite</parameter>
+        </parameter>
+        <parameter key="route_file_name">rewrite</parameter>
+        <parameter key="baseUri">rewrite</parameter>
+    </parameters>
+    <services>
+        <!-- Class as services -->
+        <service id="instanceManager" class="%instanceManager.class%"
+                 factory-class="%instanceManager.class%"
+                 factory-method="getInstance"/>
+
+        <service id="entityMetaDataConfig" class="%entityMetaDataConfig.class%"
+                 factory-class="%entityMetaDataConfig.class%"
+                 factory-method="createXMLMetadataConfiguration">
+            <argument>%dcm_path%</argument>
+            <argument>%is_dev_mode%</argument>
+            <call method="setAutoGenerateProxyClasses">
+                <argument>%proxy_auto_generate_strategy%</argument>
+            </call>
+        </service>
+
+        <service id="sessionInit" class="%sessionInit.class%"/>
+        <service id="eventManager" class="%eventManager.class%">
+            <call method="addEventSubscriber">
+                <argument type="service" id="sessionInit"/>
+            </call>
+        </service>
+
+        <service id="connection" class="Doctrine\DBAL\Connection"
+            factory-class="%driverManager.class%" factory-method="getConnection">
+            <argument>%connection_params%</argument>
+            <argument type="service" id="entityMetaDataConfig"/>
+            <argument type="service" id="eventManager"/>
+        </service>
+
+        <service id="entityManager" class="%entityManager.class%"
+                 factory-class="%entityManager.class%"
+                 factory-method="create">
+            <argument type="service" id="connection"/>
+            <argument type="service" id="entityMetaDataConfig"/>
+            <argument type="service" id="eventManager"/>
+        </service>
+
+        <service id="session" class="%session.class%"/>
+
+        <service id="crypt" class="%crypt.class%"/>
+
+        <service id="crudController" class="%crud.class%" abstract="true">
+            <argument id="dataSourceManager" type="service"/>
+        </service>
+
+        <service id="nameProvider" class="%nameProvider.class%"
+                 factory-class="%nameProvider.class%"
+                 factory-method="factoryDefault"/>
+
+        <service id="sessionCache" class="\Zeedhi\Framework\Cache\Type\SessionImpl">
+            <argument type="service" id="session"/>
+        </service>
+
+        <service id="dataSourceParamBag" class="\Zeedhi\Framework\DataSource\ParameterBag">
+            <argument type="service" id="sessionCache"/>
+        </service>
+
+        <service id="dataSourceManager" class="%dataSourceManager.class%">
+            <argument type="service" id="entityManager"/>
+            <argument type="service" id="nameProvider"/>
+            <argument type="service" id="dataSourceParamBag"/>
+        </service>
+
+        <service id="routeParser" class="%routerParser.class%">
+            <argument>%route_file_name%</argument>
+        </service>
+
+        <service id="router" class="%router.class%">
+            <call method="setParser">
+                <argument type="service" id="routeParser"/>
+            </call>
+            <call method="readRoutes"/>
+        </service>
+
+        <service id="corsOptions" class="%corsOptions.class%">
+            <argument type="string">*</argument>
+            <argument type="string">*</argument>
+            <argument type="string">*</argument>
+            <argument>86400</argument>
+            <argument>false</argument>
+            <argument>true</argument>
+        </service>
+
+        <service id="cors" class="%cors.class%">
+            <argument type="service" id="corsOptions"/>
+        </service>
+
+        <service id="antiCSRF" class="%antiCSRF.class%">
+            <argument type="service" id="sessionCache"/>
+        </service>
+
+        <service id="kernel" class="%kernel.class%">
+            <argument>%baseUri%</argument>
+            <argument type="service" id="cors"/>
+            <argument>%is_dev_mode%</argument>
+        </service>
+
+        <service id="exceptionHandler" class="%exceptionHandler.class%"/>
+
+        <service id="serializerContext" class="%serializerContext.class%"/>
+        <service id="serializerBuilder" class="%serializerBuilder.class%"/>
+        <service id="serializerExclusionStrategy" class="%serializerExclusionStrategy.class%"/>
+        <service id="serializerUpperCaseNamingStrategy" class="%serializerUpperCaseNamingStrategy.class%"/>
+
+        <service id="serializer" class="%serializer.class%">
+            <argument type="service" id="serializerContext"/>
+            <argument type="service" id="serializerBuilder"/>
+            <argument type="service" id="serializerExclusionStrategy"/>
+            <call method="setNamingStrategy">
+                <argument type="service" id="serializerUpperCaseNamingStrategy"/>
+            </call>
+        </service>
+
+        <service id="preDispatchEvent" class="%preDispatchEvent.class%"/>
+        <service id="postDispatchEvent" class="%postDispatchEvent.class%"/>
+        <service id="onExceptionEvent" class="%onExceptionEvent.class%"/>
+
+        <service id="errorHandler" class="%errorHandler.class%"/>
+        <service id="errorHandlerService" class="Zeedhi\Framework\ErrorHandler\ErrorHandlerService">
+            <call method="addHandler">
+                <argument type="service" id="errorHandler"/>
+            </call>
+        </service>
+
+        <service id="application" class="%application.class%">
+            <argument type="service" id="instanceManager"/>
+            <argument type="service" id="kernel"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="exceptionHandler"/>
+            <argument type="service" id="preDispatchEvent"/>
+            <argument type="service" id="postDispatchEvent"/>
+            <argument type="service" id="onExceptionEvent"/>
+            <call method="setErrorHandlerService">
+                <argument type="service" id="errorHandlerService"/>
+            </call>
+        </service>
+    </services>
+</container>

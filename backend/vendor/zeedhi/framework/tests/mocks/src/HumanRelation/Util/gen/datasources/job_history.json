@@ -1,0 +1,18 @@
+{
+    "job_history": {
+        "tableName": "JOB_HISTORY",
+        "columns": [
+            "EMPLOYEE_ID",
+            "START_DATE",
+            "END_DATE",
+            "JOB_ID",
+            "DEPARTMENT_ID"
+        ],
+        "primaryKeys": [
+            "START_DATE",
+            "EMPLOYEE_ID"
+        ],
+        "sequentialColumn": null,
+        "relations": []
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "topic": {
+        "tableName": "topic",
+        "columns": [
+            "_id",
+            "author",
+            "topic"
+        ],
+        "typesMapping": {
+            "_id": "mongoId"
+        },
+        "primaryKeys": [
+            "_id"
+        ],
+        "sequentialColumn": "_id"
+    }
+}

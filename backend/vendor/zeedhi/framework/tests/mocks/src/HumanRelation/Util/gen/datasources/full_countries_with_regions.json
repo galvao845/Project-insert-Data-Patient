@@ -1,0 +1,25 @@
+{
+  "full_countries_with_regions": {
+    "tableName": "COUNTRIES",
+    "columns": {
+      "COUNTRY_ID": "COUNTRY_ID",
+      "COUNTRY_NAME": "COUNTRY_NAME",
+      "REGION_ID": "REGION_ID",
+      "REGION_NAME": null
+    },
+    "primaryKeys": [
+      "COUNTRY_ID"
+    ],
+    "sequentialColumn": null,
+    "relations": [
+      {
+        "targetTable" : "REGIONS",
+        "targetSequentialColumn" : "REGION_ID",
+        "localSequentialColumn" : "REGION_ID",
+        "localColumns" : ["REGION_ID"],
+        "targetColumns" : ["REGION_ID"]
+      }
+    ],
+    "query": "SELECT C.COUNTRY_ID, C.COUNTRY_NAME, C.REGION_ID, R.REGION_NAME FROM COUNTRIES C JOIN REGIONS R ON R.REGION_ID = C.REGION_ID"
+  }
+}

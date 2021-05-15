@@ -1,0 +1,35 @@
+{
+  "connectionId"   : -1,
+  "mappingType"    : "xml",
+  "mappingPath"    : "dcm",
+  "srcPath"        : "src",
+  "workConnection" : {
+    "driver"     : "oci8",
+    "host"       : "192.168.122.55",
+    "port"       : "1521",
+    "username"   : "INT_ZEEDHI",
+    "password"   : "F60oiadefIESOskvGANW39GhTJyVeHyBSkzfI1OzNbc=",
+    "dbname"     : "xe"
+  },
+  "metaConnection" : {
+    "driver"     : "oci8",
+    "host"       : "192.168.122.6",
+    "port"       : "1521",
+    "username"   : "ZEEDHI",
+    "password"   : "F60oiadefIESOskvGANW39GhTJyVeHyBSkzfI1OzNbc=",
+    "dbname"     : "pdborcl",
+    "service"    : true
+  },
+  "namespace"      : null,
+  "inflectorClassName" : "\\tests\\Zeedhi\\Framework\\Util\\Inflector",
+  "subModelsByTables" : {
+    "COUNTRIES"   : "HUMAN_RELATION",
+    "DEPARTMENTS" : "HUMAN_RELATION",
+    "EMPLOYEES"   : "HUMAN_RELATION",
+    "JOB_HISTORY" : "HUMAN_RELATION",
+    "JOBS"        : "HUMAN_RELATION",
+    "LOCATIONS"   : "HUMAN_RELATION",
+    "REGIONS"     : "HUMAN_RELATION"
+  },
+  "inverseRelations" : {}
+}

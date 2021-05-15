@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="HumanRelation\Repositories\TestSequence" name="HumanRelation\Entities\TestSequence" table="TEST_SEQUENCE">
+    <id name="id" type="string" column="ID">
+        <generator strategy="SEQUENCE" />
+        <sequence-generator sequence-name="TEST_SEQUENCE_ID_SEQ" allocation-size="100" initial-value="1" />
+    </id>
+    <field name="text" type="string" column="TEXT"/>
+  </entity>
+</doctrine-mapping>

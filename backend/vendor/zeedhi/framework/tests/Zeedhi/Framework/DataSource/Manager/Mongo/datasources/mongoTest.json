@@ -1,0 +1,30 @@
+{
+    "mongoTest": {
+        "tableName": "mongoTest",
+        "columns": [
+            "_id",
+            "key",
+            "text",
+            "date",
+            "foreignKey"
+        ],
+        "primaryKeys": [
+            "_id"
+        ],
+        "sequentialColumn": "_id",
+        "typesMapping": {
+            "_id": "mongoId",
+            "date": "mongoDate",
+            "foreignKey": "mongoId"
+        },
+        "relations" : [
+            {
+                "targetTable": "anotherTable",
+                "targetSequentialColumn": "_id",
+                "localSequentialColumn": "foreignKey",
+                "localColumns": ["foreignKey"],
+                "targetColumns": ["_id"]
+            }
+        ]
+    }
+}

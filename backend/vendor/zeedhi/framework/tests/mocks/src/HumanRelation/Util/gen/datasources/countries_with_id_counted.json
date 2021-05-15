@@ -1,0 +1,23 @@
+{
+  "countries_with_id_counted": {
+    "tableName": "COUNTRIES",
+    "columns": [
+      "COUNT(COUNTRY_ID)",
+      "REGION_ID"
+    ],
+    "primaryKeys": [
+      "REGION_ID"
+    ],
+    "sequentialColumn": null,
+    "relations": [
+      {
+        "targetTable" : "REGIONS",
+        "targetSequentialColumn" : "REGION_ID",
+        "localSequentialColumn" : "REGION_ID",
+        "localColumns" : ["REGION_ID"],
+        "targetColumns" : ["REGION_ID"]
+      }
+    ],
+    "query": "SELECT C.COUNTRY_ID, C.COUNTRY_NAME, C.REGION_ID, R.REGION_NAME FROM COUNTRIES C JOIN REGIONS R ON R.REGION_ID = C.REGION_ID"
+  }
+}

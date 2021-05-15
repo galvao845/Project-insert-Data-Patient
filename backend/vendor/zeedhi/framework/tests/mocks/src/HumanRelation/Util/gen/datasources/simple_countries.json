@@ -1,0 +1,23 @@
+{
+    "simple_countries": {
+        "tableName": "COUNTRIES",
+        "columns": {
+            "ID" : "COUNTRY_ID",
+            "NAME" : "COUNTRY_NAME",
+            "REGION_ID" :"REGION_ID"
+        },
+        "primaryKeys": [
+            "COUNTRY_ID"
+        ],
+        "sequentialColumn": null,
+        "relations": [
+            {
+                "targetTable" : "REGIONS",
+                "targetSequentialColumn" : "REGION_ID",
+                "localSequentialColumn" : "REGION_ID",
+                "localColumns" : ["REGION_ID"],
+                "targetColumns" : ["REGION_ID"]
+            }
+        ]
+    }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="dir_php">php</parameter>
+        <parameter key="baseUri">backend/service/index.php</parameter>
+        <parameter key="route_file_name">../routes.json</parameter>
+        
+        <parameter key="connection_params" type="collection">
+            <parameter key="driver">mysqli</parameter>
+            <parameter key="user">proradis_saas</parameter>
+            <parameter key="password">proradis</parameter>
+            <parameter key='host'>192.168.100.12</parameter>
+            <parameter key='port'>3306</parameter>
+            <parameter key="dbname">proradis</parameter>
+            <parameter key='service'>true</parameter>
+            <parameter key='isEncrypted'>false</parameter>
+            <parameter key='charset'>utf8</parameter>
+        </parameter>     
+    </parameters>
+    <services>
+        <service id="connection" class="\Doctrine\DBAL\Connection" factory-class="\Service\Arquivo" factory-method="factoryWithEncryptedPassword">
+            <argument>%connection_params%</argument>
+            <argument id="oracleDecrypt">proradis</argument>
+            <argument type="service" id="entityMetaDataConfig"/>
+            <argument type="service" id="eventManager"/>
+        </service>
+
+        <service id="entityManager" class="%entityManager.class%" factory-class="%entityManager.class%" factory-method="create">
+            <argument type="service" id="connection"/>
+            <argument type="service" id="entityMetaDataConfig"/>
+            <argument type="service" id="eventManager"/>
+        </service>
+    </services>    
+</container>

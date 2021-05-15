@@ -1,0 +1,24 @@
+{
+    "locations": {
+        "tableName": "LOCATIONS",
+        "columns": [
+            "LOCATION_ID",
+            "CITY",
+            "STATE_PROVINCE",
+            "COUNTRY_ID"
+        ],
+        "primaryKeys": [
+            "LOCATION_ID"
+        ],
+        "sequentialColumn": "LOCATION_ID",
+        "relations": [
+            {
+                "targetTable" : "COUNTRIES",
+                "targetSequentialColumn" : "COUNTRY_ID",
+                "localSequentialColumn" : "COUNTRY_ID",
+                "localColumns" : ["COUNTRY_ID"],
+                "targetColumns" : ["COUNTRY_ID"]
+            }
+        ]
+    }
+}

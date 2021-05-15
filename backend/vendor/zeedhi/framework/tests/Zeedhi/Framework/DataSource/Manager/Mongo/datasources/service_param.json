@@ -1,0 +1,17 @@
+{
+    "service_param": {
+        "tableName": "service_param",
+        "columns": [
+            "_id",
+            "name"
+        ],
+        "primaryKeys": [
+            "_id"
+        ],
+        "sequentialColumn": "_id",
+        "typesMapping": {
+            "_id": "mongoId"
+        },
+        "wrapperCollection": "service"
+    }
+}

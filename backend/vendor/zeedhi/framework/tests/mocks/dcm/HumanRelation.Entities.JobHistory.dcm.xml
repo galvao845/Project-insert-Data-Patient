@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="HumanRelation\Repositories\JobHistory" name="HumanRelation\Entities\JobHistory" table="JOB_HISTORY">
+    <id name="employee" association-key="true" />
+    <id name="startDate" type="datetime" column="START_DATE"/>
+    <field name="endDate" type="datetime" column="END_DATE"/>
+    <many-to-one field="job" target-entity="HumanRelation\Entities\Jobs">
+      <join-columns>
+        <join-column name="JOB_ID" referenced-column-name="JOB_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="employee" target-entity="HumanRelation\Entities\Employees">
+      <join-columns>
+        <join-column name="EMPLOYEE_ID" referenced-column-name="EMPLOYEE_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="department" target-entity="HumanRelation\Entities\Departments">
+      <join-columns>
+        <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

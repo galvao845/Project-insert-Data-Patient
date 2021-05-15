@@ -1,0 +1,3 @@
+Testando um conteúdo não unicode.
+Talvez o correta seria ser não UTF-8.
+Por via das dúvidas será com um conteúdo nem um, nem outro.

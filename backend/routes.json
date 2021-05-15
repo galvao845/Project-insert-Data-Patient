@@ -1,0 +1,29 @@
+[   
+    {
+        "uri": "/cadPatient",
+        "controller": "\\Controller\\Arquivo",
+        "controllerMethod": "cadPatient",
+        "methods": [
+            "POST"
+        ],
+        "requestType": "Row"
+    },
+    {
+        "uri": "/cadVaccination",
+        "controller": "\\Controller\\Arquivo",
+        "controllerMethod": "cadVaccination",
+        "methods": [
+            "POST"
+        ],
+        "requestType": "Row"
+    },
+    {
+        "uri": "/cadVaccine",
+        "controller": "\\Controller\\Arquivo",
+        "controllerMethod": "cadVaccine",
+        "methods": [
+            "POST"
+        ],
+        "requestType": "Row"
+     }
+]

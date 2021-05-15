@@ -1,0 +1,6 @@
+parameters:
+    hello.class: tests\Zeedhi\Framework\ApplicationMocks\Hello
+
+services:
+    hello:
+        class: "%hello.class%"

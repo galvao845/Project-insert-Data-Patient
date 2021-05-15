@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="HumanRelation\Repositories\Employees" name="HumanRelation\Entities\Employees" table="EMPLOYEES">
+    <id name="employeeId" type="integer" column="EMPLOYEE_ID"/>
+    <field name="firstName" type="string" column="FIRST_NAME"/>
+    <field name="lastName" type="string" column="LAST_NAME"/>
+    <field name="email" type="string" column="EMAIL"/>
+    <field name="phoneNumber" type="string" column="PHONE_NUMBER"/>
+    <field name="hireDate" type="datetime" column="HIRE_DATE"/>
+    <field name="salary" type="integer" column="SALARY"/>
+    <field name="commissionPct" type="integer" column="COMMISSION_PCT"/>
+    <many-to-one field="manager" target-entity="HumanRelation\Entities\Employees">
+      <join-columns>
+        <join-column name="MANAGER_ID" referenced-column-name="EMPLOYEE_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="job" target-entity="HumanRelation\Entities\Jobs">
+      <join-columns>
+        <join-column name="JOB_ID" referenced-column-name="JOB_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="department" target-entity="HumanRelation\Entities\Departments">
+      <join-columns>
+        <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
