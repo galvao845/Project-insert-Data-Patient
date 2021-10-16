@@ -47,7 +47,7 @@ class Arquivo {
             $this->entityManager->getConnection()->rollBack();
             return $error->getMessage();
         }
-	}
+    }
 	
     public function cadVaccine($row) {
     	$this->entityManager->getConnection()->beginTransaction();
@@ -76,7 +76,7 @@ class Arquivo {
             $this->entityManager->getConnection()->rollBack();
             return $error->getMessage();
         }
-	}
+    }
 	
     public function cadVaccination($row) {
     	$this->entityManager->getConnection()->beginTransaction();
