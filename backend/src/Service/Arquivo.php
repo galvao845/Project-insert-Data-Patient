@@ -142,6 +142,6 @@ class Arquivo {
             $this->entityManager->getConnection()->rollBack();
             return $error->getMessage();
         }
-	}	
+    }	
     
 }
